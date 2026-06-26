@@ -1,4 +1,4 @@
- # contact - portfolio page
+ # contact | portfolio page
  - functional contact form using EmailJs
  -  custom domain - devdes.tech
  -  portfolio section - git 
