@@ -1,7 +1,7 @@
  # contact | portfolio page
  - functional contact form using EmailJs
  -  custom domain - devdes.tech
- -  portfolio section - git 
+ -  portfolio section with completed front and back projects
  - og tags for social media - scraped by meta facebook tool
  - color scheme- burgendy, blush, nude, charcoal, brown, sage
 
