@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Contact — O.B</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@200;300&family=Pinyon+Script&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --burg:    #6B1F1F;
+  --burg-dk: #4A1515;
+  --burg-lt: #82292a;
+  --cream:   #FAF7F4;
+  --linen:   #F2EBE2;
+  --ink:     #1A0F0C;
+  --ink-dim: rgba(26,15,12,0.11);
+}
+
+html, body {
+  min-height: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--cream);
+  font-family: 'Jost', sans-serif;
+  font-weight: 200;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+
+
+.page {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── NAV ── */
+
+
+
+
+/* ── LEFT — velvet panel ── */
+.left {
+  order: 1;
+  position: relative;
+  overflow: hidden;
+  padding: 3rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  /* corduroy velvet rib base */
+  background-color: #5C1A1A;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAgCAIAAAC6rk4JAAAAGUlEQVR42mPwEBIKFRPLVFAAkgyjnMHGAQBnGkLh6/HOHgAAAABJRU5ErkJggg==");
+  background-repeat: repeat;
+  background-size: 4px 32px;
+}
+
+/* soft ambient lighting — not dramatic */
+.left::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 40% 30%, rgba(180,80,80,0.1) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 75%, rgba(0,0,0,0.18) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.left::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    150deg,
+    rgba(255,255,255,0.04) 0%,
+    transparent 50%,
+    rgba(0,0,0,0.07) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* sheen — the directional highlight that makes velvet look like velvet */
+.sheen {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      150deg,
+      rgba(255,255,255,0.05) 0%,
+      transparent 45%,
+      rgba(0,0,0,0.08) 100%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* micro-sheen — fine directional highlight across the pile */
+.sheen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,0.025) 0px,
+    rgba(255,255,255,0.025) 1px,
+    transparent 1px,
+    transparent 12px
+  );
+  pointer-events: none;
+}
+
+/* edge vignette */
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0,0,0,0.28) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+.scallop-edge {
+  display: none;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 20px;
+  z-index: 2;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 16' preserveAspectRatio='none'%3E%3Cpath d='M0 0 Q200 16 400 0 L400 16 L0 16 Z' fill='%23E1D5C5'/%3E%3C/svg%3E") no-repeat bottom center;
+  background-size: 100% 100%;
+}
+@media (max-width: 768px) {
+  .scallop-edge { display: block; }
+}
+
+.dark-overlay {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  pointer-events: none;
+  z-index: 0;
+  transition: background 0.3s;
+}
+
+@media (max-width: 768px) {
+  .dark-overlay {
+    background: rgba(0,0,0,0.52);
+  }
+}
+
+.left-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 0;
+  gap: 2rem;
+}
+
+.lp-center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.lp-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 0.65rem;
+  line-height: 1.8;
+  color: rgba(245,225,215,0.55);
+  letter-spacing: 0.06em;
+  max-width: 28ch;
+}
+
+.lp-sig {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.75rem;
+  color: rgba(245,225,215,0.35);
+  letter-spacing: 0.12em;
+  margin-top: 0;
+  text-align: center;
+}
+
+
+.lp-services {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.lp-service {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245,225,215,0.65);
+  text-align: center;
+  margin: 0;
+}
+
+/* O.B monogram — Rhode logo energy */
+
+/* bottom sig */
+
+.lp-top, 
+
+
+
+
+
+
+/* headline — simple, luminous, like foiled text on fabric */
+
+
+.intro {
+  font-size: 0.72rem;
+  line-height: 2;
+  color: rgba(245,225,215,0.32);
+  max-width: 32ch;
+  margin-bottom: 2.2rem;
+  font-weight: 200;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+/* story */
+.story {
+  border-left: none;
+  padding: 0 1rem;
+  margin-bottom: 2.5rem;
+  flex-shrink: 0;
+  text-align: center;
+  max-width: 28ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+.story p {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.9rem;
+  line-height: 1.9;
+  color: #D4A5A0;
+}
+.story p em {
+  font-style: normal;
+  color: rgba(245,225,215,0.62);
+}
+.story-sig {
+  margin-top: 0.7rem;
+  font-size: 0.5rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(245,225,215,0.2);
+  font-weight: 300;
+}
+
+/* services */
+.services-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  color: rgba(245,225,215,0.45);
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+  flex-shrink: 0;
+  text-align: center;
+  width: 100%;
+}
+.services { list-style: none; flex-shrink: 0; width: 100%; }
+.services li {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 200;
+  padding: 0.6rem 0;
+  border-bottom: 0.5px solid rgba(245,225,215,0.07);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(245,225,215,0.82);
+  transition: color 0.3s;
+  cursor: default;
+}
+.services li:hover { color: rgba(245,225,215,0.6); }
+.services li span { display: none; }
+
+.left-foot {
+  padding-top: 2rem;
+  font-size: 0.46rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245,225,215,0.14);
+  font-weight: 300;
+  flex-shrink: 0;
+}
+
+/* ── RIGHT — form ── */
+.right {
+  order: 2;
+  background-color: #E1D5C5;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAABCAIAAACUgoPjAAAAE0lEQVR42mO4dGz7w6vHXj+4BAAkdwdp/mx2/wAAAABJRU5ErkJggg==");
+  background-repeat: repeat;
+  background-size: 3px 100%;
+  padding: 3rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  border-right: none;
+  order: 1;
+}
+.left { order: 2; }
+
+.form-eyebrow {
+  display: block;
+  font-size: 0.5rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(107,31,31,0.7);
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+}
+.form-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 1.9rem;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 2.8rem;
+}
+
+.contact-form { flex: 1; display: flex; flex-direction: column; }
+.field { margin-bottom: 2rem; }
+.field label {
+  display: block;
+  font-size: 0.52rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(26,15,12,0.85);
+  margin-bottom: 0.5rem;
+  transition: color 0.2s;
+  font-weight: 400;
+}
+.field:focus-within label { color: var(--burg); }
+
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(26,15,12,0.25);
+  color: var(--ink);
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0.5rem 0;
+  outline: none;
+  transition: border-color 0.3s;
+  appearance: none;
+  -webkit-appearance: none;
+  letter-spacing: 0.03em;
+  resize: none;
+  border-radius: 0;
+}
+.field input::placeholder,
+.field textarea::placeholder,
+.field select::placeholder { color: rgba(26,15,12,0.45); }
+.field input:focus,
+.field textarea:focus,
+.field select:focus { border-bottom-color: rgba(107,31,31,0.5); }
+.field textarea { min-height: 68px; }
+.field select option { background: #E1D5C5; color: var(--ink); }
+
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+.field-row .field { margin-bottom: 0; }
+
+.select-wrap { position: relative; }
+.select-wrap::after {
+  content: '';
+  position: absolute; right: 2px; top: 44%;
+  transform: translateY(-50%);
+  width: 4px; height: 4px;
+  border-right: 0.5px solid rgba(107,31,31,0.5);
+  border-bottom: 0.5px solid rgba(107,31,31,0.5);
+  rotate: 45deg;
+  pointer-events: none;
+}
+
+.budget-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; padding-top: 0.45rem; }
+.pill {
+  background: transparent;
+  border: 1px solid rgba(26,15,12,0.45);
+  color: rgba(26,15,12,0.8);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.6rem 0.9rem;
+  min-height: 44px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.pill:hover { border-color: rgba(107,31,31,0.35); color: var(--burg); }
+.pill.active { border-color: var(--burg); color: var(--cream); background: var(--burg); }
+
+/* trust badges */
+.trust-badges {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.4rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 0.5px solid rgba(26,15,12,0.08);
+}
+.badge {
+  font-size: 0.58rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(26,15,12,0.62);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.ada-badge {
+  padding-left: 0;
+}
+
+.submit-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.submit-note {
+  font-size: 0.58rem;
+  color: rgba(26,15,12,0.85);
+  line-height: 1.8;
+  max-width: 22ch;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.online-star {
+  font-size: 0.85rem;
+  color: #C9A84C;
+  animation: starPulse 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 5px rgba(201,168,76,1)) drop-shadow(0 0 10px rgba(201,168,76,0.8)) drop-shadow(0 0 18px rgba(201,168,76,0.5));
+  flex-shrink: 0;
+  line-height: 1;
+}
+@keyframes starPulse {
+  0%, 100% { opacity: 1; filter: drop-shadow(0 0 6px rgba(201,168,76,1)) drop-shadow(0 0 14px rgba(201,168,76,0.8)) drop-shadow(0 0 22px rgba(201,168,76,0.5)); }
+  50%       { opacity: 0.55; filter: drop-shadow(0 0 2px rgba(201,168,76,0.5)) drop-shadow(0 0 5px rgba(201,168,76,0.3)); }
+}
+.submit-btn {
+  background: transparent;
+  border: 0.5px solid rgba(107,31,31,0.55);
+  color: var(--burg);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.92rem;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.1em;
+  padding: 1rem 2.2rem;
+  min-height: 44px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.4s;
+}
+.submit-btn::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: var(--burg);
+  transform: translateY(101%);
+  transition: transform 0.4s cubic-bezier(0.77,0,0.175,1);
+  z-index: 0;
+}
+.submit-btn:hover::before { transform: translateY(0); }
+.submit-btn:hover { color: var(--cream); }
+.submit-btn span { position: relative; z-index: 1; }
+
+.status { margin-top: 0.9rem; font-size: 0.56rem; letter-spacing: 0.1em; text-align: right; min-height: 1.2em; }
+.status.success { color: var(--burg); }
+.status.error { color: #903030; }
+
+/* FOOTER */
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .page { grid-template-columns: 1fr; }
+
+  /* velvet panel first on mobile */
+  .left {
+    order: 1;
+    padding: 3.5rem 1.5rem 3rem;
+    background-color: #6B2020;
+    background-image:
+      radial-gradient(ellipse at 40% 20%, rgba(180,80,80,0.1) 0%, transparent 55%),
+      radial-gradient(ellipse at 70% 90%, rgba(0,0,0,0.18) 0%, transparent 50%);
+    min-height: 55vh;
+    justify-content: center;
+  }
+  .left::before, .left::after { display: none; }
+  .sheen { display: none; }
+  .vignette { background: radial-gradient(ellipse at 50% 50%, transparent 50%, rgba(0,0,0,0.18) 100%); }
+  .left-inner { align-items: center; justify-content: center; }
+
+  /* headline — elegant on mobile */
+  
+  .story { max-width: 100%; }
+  .story p { font-size: 0.8rem; line-height: 1.8; }
+
+  /* form second */
+  .right {
+    order: 2;
+    padding: 2.5rem 1.5rem;
+    border-right: none;
+  }
+  .form-title { font-size: 1.4rem; margin-bottom: 1.8rem; }
+
+  /* stack name/email */
+  .field-row { grid-template-columns: 1fr; gap: 0; }
+  .field-row .field { margin-bottom: 1.8rem; }
+
+  /* badges */
+  .trust-badges { align-items: center; gap: 0.5rem; padding-bottom: 1rem; margin-bottom: 1rem; }
+
+  /* submit */
+  .submit-row { flex-direction: column; align-items: stretch; gap: 1rem; }
+  .submit-btn { text-align: center; width: 100%; }
+  .submit-note { text-align: center; max-width: 100%; }
+
+  /* star note */
+  .submit-note { justify-content: center; }
+}
+
+@media (max-width: 390px) {
+    .left { padding: 2.5rem 1.2rem; }
+  .right { padding: 2rem 1.2rem; }
+  .form-title { font-size: 1.25rem; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+
+  <!-- FORM FIRST -->
+  <div class="right">
+    <span class="form-eyebrow">New enquiry</span>
+    <p class="form-title">Tell me about<br/>your project.</p>
+
+    <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+      <div class="field-row">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="company">Brand / Company <span style="opacity:0.4;font-style:italic;text-transform:none;letter-spacing:0;">optional</span></label>
+        <input type="text" id="company" name="company" placeholder="Who are you building for?" style="color:inherit;" />
+      </div>
+
+      <div class="field">
+        <label for="service">Service</label>
+        <div class="select-wrap">
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Select a service</option>
+            <option>Portfolio / Personal Site</option>
+            <option>Visual Prototypes</option>
+            <option>Retail &amp; Brand Design</option>
+            <option>Front-End Development</option>
+            <option>Back-End Development</option>
+            <option>Full Project (Design + Dev)</option>
+            <option>Just a question</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Budget</label>
+        <div class="budget-pills">
+          <button type="button" class="pill" data-val="Under $500">Under $500</button>
+          <button type="button" class="pill" data-val="$500–$1,500">$500–$1,500</button>
+          <button type="button" class="pill" data-val="$1,500–$3,000">$1,500–$3,000</button>
+          <button type="button" class="pill" data-val="$3,000+">$3,000+</button>
+          <button type="button" class="pill" data-val="Let's discuss">Let's discuss</button>
+        </div>
+        <input type="hidden" id="budget" name="budget" />
+      </div>
+
+      <div class="field">
+        <label for="message">Project details</label>
+        <textarea id="message" name="message" placeholder="Vision, timeline, anything I should know…" rows="4" required></textarea>
+      </div>
+
+      <div class="trust-badges">
+        <span class="badge"><svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;"><rect x="1" y="4.5" width="8" height="6" rx="1" fill="rgba(26,15,12,0.7)"/><path d="M3 4.5V3a2 2 0 0 1 4 0v1.5" stroke="rgba(26,15,12,0.7)" stroke-width="1" fill="none"/><circle cx="5" cy="7.5" r="0.8" fill="#F2EBE2"/></svg> SSL Secured</span>
+        <span class="badge ada-badge">◈ ADA Compliant</span>
+      </div>
+
+      <div class="submit-row">
+        <p class="submit-note"><span class="online-star">✦</span> Response within 48 hours.</p>
+        <button type="submit" class="submit-btn"><span>Send enquiry →</span></button>
+      </div>
+      <p class="status" id="statusMsg"></p>
+    </form>
+  </div>
+
+  <!-- VELVET PANEL -->
+  <div class="left">
+    <div class="sheen"></div>
+    <div class="vignette"></div>
+    <div class="dark-overlay"></div>
+    <div class="scallop-edge"></div>
+
+    <div class="left-inner">
+
+      <div class="lp-services">
+        <p class="lp-service">Portfolio &amp; Personal Sites</p>
+        <p class="lp-service">Visual Prototypes</p>
+        <p class="lp-service">Retail &amp; Brand Design</p>
+        <p class="lp-service">Front-End Development</p>
+        <p class="lp-service">Back-End Development</p>
+      </div>
+
+      <div class="lp-center">
+        <p class="lp-sub">Your portfolio, brand or professional site should make you feel uplifted, proud, and ready to take on the digital world.</p>
+        <p class="lp-sig">— O.B</p>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
+  const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
+  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+  let selectedBudget = '';
+  document.querySelectorAll('.pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedBudget = btn.dataset.val;
+      document.getElementById('budget').value = selectedBudget;
+    });
+  });
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.querySelector('.submit-btn');
+    const status = document.getElementById('statusMsg');
+    btn.disabled = true;
+    btn.querySelector('span').textContent = 'Sending…';
+    status.className = 'status'; status.textContent = '';
+    const params = {
+      name:    document.getElementById('name').value,
+      email:   document.getElementById('email').value,
+      company: document.getElementById('company').value || '—',
+      service: document.getElementById('service').value,
+      budget:  selectedBudget || 'Not specified',
+      message: document.getElementById('message').value,
+    };
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
+      status.classList.add('success');
+      status.textContent = 'Sent. I\'ll be in touch.';
+      e.target.reset();
+      document.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
+      selectedBudget = '';
+    } catch (err) {
+      status.classList.add('error');
+      status.textContent = 'Something went wrong — please try again.';
+    } finally {
+      btn.disabled = false;
+      btn.querySelector('span').textContent = 'Send enquiry →';
+    }
+  }
+</script>
+</body>
+</html>
